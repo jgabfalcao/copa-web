@@ -3,6 +3,29 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --card-color-primary: #f7dd43;
+  --card-title-border-color: #746615;
+  --bg-image: url(./assets/bg-yellow.svg);
+  --card-bg-color: #1d1c19;
+  --color-bg: ;
+}
+
+body.blue {
+  --card-color-primary: #338af3;
+  --card-title-border-color: #338af3;
+  --bg-image: url(./assets/bg-blue.svg);
+  --card-bg-color: #202024;
+}
+
+body.green {
+  --card-color-primary: #047c3f;
+  --card-title-border-color: #047c3f;
+  --bg-image: url(./assets/bg-green.svg);
+  --card-bg-color: #1a1f1b;
+}
+
 body * {
   font-family: "Roboto", sans-serif;
 }
@@ -11,7 +34,7 @@ ul {
 }
 body {
   background-color: #121214;
-  background-image: url(./assets/bg-blue.svg);
+  background-image: var(--bg-image);
   background-position-y: center;
   background-position-y: -715px;
 }
@@ -35,8 +58,8 @@ header {
 .card {
   padding: 32px 23px;
   text-align: center;
-  background: #1d1c19;
-  border-bottom: 2px solid #f7dd43;
+  background: var(--card-bg-color);
+  border-bottom: 2px solid var(--card-color-primary);
   border-radius: 6px;
 }
 
@@ -46,7 +69,7 @@ header {
   justify-content: center;
   align-items: center;
   padding: 8px 16px;
-  border: 1px solid #746615;
+  border: 1px solid var(--card-title-border-color);
   border-radius: 6px;
 
   width: fit-content;
@@ -83,4 +106,51 @@ header {
   font-size: 36px;
   line-height: 125%;
   color: #e1e1e6;
+}
+
+.card h2:hover {
+  transform: scale(1.2);
+  transition: 0.8s;
+  border: 1px solid var(--card-color-primary);
+  -moz-box-shadow: 0px 0px 30px var(--card-color-primary);
+  -webkit-box-shadow: 0px 0px 8px var(--card-color-primary);
+}
+
+.card ul li img:hover {
+  transform: scale(1.3);
+  border-radius: 30px;
+  transition: transform 0.8s;
+}
+
+.card ul li strong:hover {
+  transform: scale(1.3);
+}
+
+.card h2:hover,
+.card ul li strong,
+.card ul li img {
+  transition: transform 0.8s;
+}
+
+.card {
+  animation: appear 3s;
+  animation: appear 0.2s forwards;
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(-2000px);
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 700px) {
+  #cards {
+    max-width: 670px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
